@@ -1,0 +1,68 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시글 작성</title>
+</head>
+<style>
+    .form-control {
+        color: #495057;
+        background-color: #fff;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+    }
+    .fieldError {
+        border-color: #bd2130;
+    }
+</style>
+<body>
+<div id="root">
+    <header>
+        <h1> 게시판</h1>
+    </header>
+    <hr/>
+
+    <nav>
+        홈 - 글 작성
+    </nav>
+    <hr/>
+
+    <div class="container">
+        <form role="form" action="/board/new" th:object="${boardForm}" method="post" >
+            <table>
+                <tbody>
+                <tr>
+                    <td>
+                        <label th:for="title">제목</label>
+                        <input type="text" th:field="*{title}" class="form-control" placeholder="제목을 입력하세요"
+                               th:class="${#fields.hasErrors('title')}? 'form-control fieldError' : 'form-control'">
+                        <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Incorrect data</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label th:for="content">내용</label>
+                        <textarea th:field="*{content}" class="form-control" placeholder="내용을 입력하세요"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label th:for="writer">작성자</label>
+                        <input type="text" th:field="*{writer}" class="form-control" placeholder="작성자를 입력하세요">
+                    </td>
+                <tr>
+                    <td>
+                        <button type="submit">작성</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <hr />
+</div>
+</body>
+</html>
