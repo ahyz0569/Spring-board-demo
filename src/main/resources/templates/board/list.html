@@ -1,0 +1,49 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시글 목록</title>
+</head>
+<body>
+<div id="root">
+    <header>
+        <h1>게시판</h1>
+    </header>
+    <hr/>
+
+    <nav>
+        홈 - 글 작성
+    </nav>
+    <hr/>
+
+    <section id="container">
+        <div>
+        <form role="form" method="post" action="/board/new">
+            <table>
+                <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>등록일</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="post : ${list}">
+                    <td th:text="${post.id}"></td>
+                    <td th:text="${post.title}"></td>
+                    <td th:text="${post.writer}"></td>
+                    <td th:text="${#temporals.format(post.regDate,'yyyy-MM-dd')}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+        </div>
+    </section>
+    <hr />
+</div>
+</body>
+</html>

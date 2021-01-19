@@ -6,6 +6,7 @@ import springboard.demo.domain.Board;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
@@ -17,5 +18,11 @@ public class BoardRepositoryImpl implements BoardRepository{
     @Override
     public void write(Board board) {
         em.persist(board);
+    }
+
+    @Override
+    public List<Board> findAll() {
+        String jpql = "select b from Board b order by b.id desc";
+        return em.createQuery(jpql, Board.class).getResultList();
     }
 }

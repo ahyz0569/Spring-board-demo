@@ -29,8 +29,13 @@ public class BoardController {
             return "board/createBoardForm";
         }
         boardService.uploadPost(boardForm);
-        return "redirect:/";
+        return "redirect:/board/list";
+    }
 
+    @GetMapping("/board/list")
+    public String list(Model model) {
+        model.addAttribute("list", boardService.list());
+        return "board/list";
     }
 
 }

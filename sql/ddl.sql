@@ -1,4 +1,6 @@
 drop table if exists board;
+drop sequence if exists hibernate_sequence;
+
 create table board (
    id bigint not null,
     title varchar(255),

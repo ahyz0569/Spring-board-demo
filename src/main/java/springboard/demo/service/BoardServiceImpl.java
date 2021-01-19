@@ -7,6 +7,8 @@ import springboard.demo.domain.Board;
 import springboard.demo.repository.BoardRepository;
 import springboard.demo.vo.BoardForm;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class BoardServiceImpl implements BoardService{
@@ -19,5 +21,10 @@ public class BoardServiceImpl implements BoardService{
         Board board = Board.createBoard(boardForm.getTitle(), boardForm.getWriter(), boardForm.getContent());
         boardRepository.write(board);
         return board.getId();
+    }
+
+    @Override
+    public List<Board> list() {
+        return boardRepository.findAll();
     }
 }
