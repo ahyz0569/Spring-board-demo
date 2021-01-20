@@ -25,4 +25,9 @@ public class BoardRepositoryImpl implements BoardRepository{
         String jpql = "select b from Board b order by b.id desc";
         return em.createQuery(jpql, Board.class).getResultList();
     }
+
+    @Override
+    public Board findOne(Long id) {
+        return em.find(Board.class, id);
+    }
 }

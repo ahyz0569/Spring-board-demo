@@ -11,4 +11,7 @@ public interface BoardRepository {
 
     // 게시글 목록
     List<Board> findAll();
+
+    // 게시글 조회
+    Board findOne(Long id);
 }

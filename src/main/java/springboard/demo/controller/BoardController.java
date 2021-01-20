@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import springboard.demo.domain.Board;
 import springboard.demo.service.BoardService;
 import springboard.demo.vo.BoardForm;
 
@@ -34,8 +35,15 @@ public class BoardController {
 
     @GetMapping("/board/list")
     public String list(Model model) {
-        model.addAttribute("list", boardService.list());
+        model.addAttribute("postList", boardService.list());
         return "board/list";
+    }
+
+    @GetMapping("/board/readView")
+    public String read(Board board, Model model) {
+        Board findPost = boardService.read(board.getId());
+        model.addAttribute("post", findPost);
+        return "board/readView";
     }
 
 }
