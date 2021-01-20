@@ -7,8 +7,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import springboard.demo.domain.Board;
+import springboard.demo.dto.BoardDTO;
 import springboard.demo.service.BoardService;
-import springboard.demo.vo.BoardForm;
+import springboard.demo.dto.BoardForm;
 
 import javax.validation.Valid;
 
@@ -41,7 +42,7 @@ public class BoardController {
 
     @GetMapping("/board/readView")
     public String read(Board board, Model model) {
-        Board findPost = boardService.read(board.getId());
+        BoardDTO findPost = boardService.read(board.getId());
         model.addAttribute("post", findPost);
         return "board/readView";
     }

@@ -1,7 +1,8 @@
 package springboard.demo.service;
 
 import springboard.demo.domain.Board;
-import springboard.demo.vo.BoardForm;
+import springboard.demo.dto.BoardDTO;
+import springboard.demo.dto.BoardForm;
 
 import java.util.List;
 
@@ -11,8 +12,8 @@ public interface BoardService {
     Long uploadPost(BoardForm boardForm);
     
     // 게시글 목록
-    List<Board> list();
+    List<BoardDTO> list();
 
     // 게시글 조회
-    Board read(Long id);
+    BoardDTO read(Long id);
 }
