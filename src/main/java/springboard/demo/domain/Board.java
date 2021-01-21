@@ -1,26 +1,18 @@
 package springboard.demo.domain;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 import static lombok.AccessLevel.*;
 
-
 @Entity
-@Getter @Setter
+@Getter @Setter(value = PRIVATE)
 @NoArgsConstructor(access = PROTECTED)
 public class Board {
 
     @Id @GeneratedValue
-    @JoinColumn(name = "board_id")
     private Long id;
 
     private String title;
@@ -37,6 +29,13 @@ public class Board {
         board.setRegDate(LocalDateTime.now());
 
         return board;
+    }
+
+    // == 수정 메서드 == //
+    public void updateBoard(String title, String content) {
+        this.title = title;
+        this.content = content;
+//        this.regDate = LocalDateTime.now();
     }
 
 }

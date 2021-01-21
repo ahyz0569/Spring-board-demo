@@ -30,4 +30,10 @@ public class BoardRepositoryImpl implements BoardRepository{
     public Board findOne(Long id) {
         return em.find(Board.class, id);
     }
+
+    @Override
+    public void delete(Long id) {
+        Board board = em.find(Board.class, id);
+        em.remove(board);
+    }
 }

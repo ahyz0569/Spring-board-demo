@@ -16,4 +16,10 @@ public interface BoardService {
 
     // 게시글 조회
     BoardDTO read(Long id);
+
+    // 게시글 수정
+    void updatePost(BoardDTO boardDTO);
+
+    // 게시글 삭제
+    void deletePost(Long id);
 }

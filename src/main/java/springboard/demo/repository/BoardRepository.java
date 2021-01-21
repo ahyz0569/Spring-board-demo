@@ -14,4 +14,7 @@ public interface BoardRepository {
 
     // 게시글 조회
     Board findOne(Long id);
+
+    // 게시글 삭제
+    void delete(Long id);
 }

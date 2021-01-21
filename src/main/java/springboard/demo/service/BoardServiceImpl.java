@@ -40,4 +40,17 @@ public class BoardServiceImpl implements BoardService{
         Board board = boardRepository.findOne(id);
         return modelMapper.map(board, BoardDTO.class);
     }
+
+    @Override
+    @Transactional
+    public void updatePost(BoardDTO boardDTO) {
+        Board findPost = boardRepository.findOne(boardDTO.getId());
+        findPost.updateBoard(boardDTO.getTitle(), boardDTO.getContent());
+    }
+
+    @Override
+    @Transactional
+    public void deletePost(Long id) {
+        boardRepository.delete(id);
+    }
 }
