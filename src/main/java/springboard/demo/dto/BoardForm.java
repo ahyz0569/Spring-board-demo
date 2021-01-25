@@ -9,9 +9,11 @@ import java.time.LocalDateTime;
 @Getter @Setter
 public class BoardForm {
 
-    @NotEmpty(message = "제목은 필수입니다")
+    @NotEmpty(message = "제목을 입력해주세요")
     private String title;
+    @NotEmpty(message = "작성자를 입력해주세요")
     private String writer;
+    @NotEmpty(message = "내용을 입력해주세요")
     private String content;
     private LocalDateTime regDate;
 }
