@@ -6,15 +6,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import springboard.demo.dto.BoardDTO;
 import springboard.demo.service.BoardService;
 import springboard.demo.dto.BoardForm;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -46,10 +44,15 @@ public class BoardController {
 
     // 게시물 목록
     @GetMapping("/board/list")
-    public String list(Model model) {
+    public String list(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum) {
         LOGGER.info("list");
 
-        model.addAttribute("postList", boardService.list());
+        List<BoardDTO> boardDTOList = boardService.list(pageNum);
+        Integer[] pageList = boardService.getPageList(pageNum);
+
+        model.addAttribute("postList", boardDTOList);
+        model.addAttribute("pageList", pageList);
+
         return "board/list";
     }
 

@@ -40,6 +40,13 @@
                 </tbody>
             </table>
         </form>
+            <div>
+                <!--@thymesVar id="pageList" type="java.lang.Integer"-->
+                <!--@thymesVar id="pageNum" type="java.lang.Integer"-->
+                <span th:each="pageNum : ${pageList}">
+                    <a th:href="@{/board/list(page=${pageNum})}" th:text="${pageNum}"></a>
+                </span>
+            </div>
         </div>
     </section>
     <hr />

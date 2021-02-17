@@ -1,6 +1,5 @@
 package springboard.demo.service;
 
-import springboard.demo.domain.Board;
 import springboard.demo.dto.BoardDTO;
 import springboard.demo.dto.BoardForm;
 
@@ -12,7 +11,7 @@ public interface BoardService {
     Long uploadPost(BoardForm boardForm);
     
     // 게시글 목록
-    List<BoardDTO> list();
+    List<BoardDTO> list(Integer pageNum);
 
     // 게시글 조회
     BoardDTO read(Long id);
@@ -22,4 +21,9 @@ public interface BoardService {
 
     // 게시글 삭제
     void deletePost(Long id);
+    
+    // 총 게시물 갯수
+    Long getBoardCount();
+
+    Integer[] getPageList(Integer pageNum);
 }
