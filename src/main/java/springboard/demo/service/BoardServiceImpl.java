@@ -19,7 +19,7 @@ public class BoardServiceImpl implements BoardService{
     private final BoardRepository boardRepository;
     private final ModelMapper modelMapper;
 
-    private static final int BLOCK_PAGE_NUM_COUNT = 13; // 블럭에 존재하는 페이지 번호 수
+    private static final int BLOCK_PAGE_NUM_COUNT = 20; // 블럭에 존재하는 페이지 번호 수
     private static final int PAGE_POST_COUNT = 10; // 한 페이지에 존재하는 게시글 수
 
     @Override
