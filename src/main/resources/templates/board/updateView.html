@@ -41,12 +41,8 @@
 
 <body>
 <div class="container">
-    <header>
-        <h1> 게시판</h1>
-    </header>
-    <hr />
-        <div th:replace="fragments/nav :: nav"></div>
-    <hr />
+    <h1 class="text-center mt-3">게시판</h1>
+    <div th:replace="fragments/nav :: nav"></div>
 
     <section id="container">
         <form th:object="${updatePost}" method="post">
@@ -87,7 +83,7 @@
             <div class="row">
                 <div class="center-block">
                     <button type="submit" class="btn btn-primary">저장</button>
-                    <button type="submit" class="btn btn-default">취소</button>
+                    <button type="submit" class="btn btn-outline-dark">취소</button>
                 </div>
             </div>
         </form>

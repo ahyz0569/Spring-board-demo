@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <div class="nav" th:fragment="nav">
-    <div>
-        <a class="btn btn-success pull-right" href="/board/list" role="button">목록</a>
-        <a class="btn btn-info pull-right" href="/board/new" role="button">글 작성</a>
+    <div class="container mb-2">
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <a class="btn btn-success" href="/board/list" role="button">목록</a>
+                <a class="btn btn-info" href="/board/new" role="button">글 작성</a>
+            </div>
+        </div>
     </div>
 </div>

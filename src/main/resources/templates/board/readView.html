@@ -30,12 +30,8 @@
 </head>
 <body>
 <div class="container">
-    <header>
-        <h1> 게시판</h1>
-    </header>
-    <hr />
-        <div th:replace="fragments/nav :: nav"></div>
-    <hr />
+    <h1 class="text-center mt-3">게시판</h1>
+    <div th:replace="fragments/nav :: nav"></div>
 
     <section id="container">
         <form th:object="${post}" name="post" method="post">
