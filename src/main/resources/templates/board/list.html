@@ -39,7 +39,7 @@
                 <tr th:each="post : ${postList}">
                     <td th:text="${post.id}"></td>
                     <td>
-                        <a th:href="@{/board/readView(id=${post.id})}" th:text="${post.title}"></a>
+                        <a th:href="@{'/board/' + ${post.id}}" th:text="${post.title}"></a>
                     </td>
                     <td th:text="${post.writer}"></td>
                     <td th:text="${#temporals.format(post.regDate,'yyyy-MM-dd')}"></td>

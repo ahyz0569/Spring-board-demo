@@ -22,7 +22,7 @@ public class BoardController {
     private static final Logger LOGGER = LoggerFactory.getLogger(BoardController.class);
 
     // 게시물 생성뷰
-    @GetMapping("/board/new")
+    @GetMapping("/board/write")
     public String createBoardForm(Model model) {
         LOGGER.info("createBoardForm");
 
@@ -31,7 +31,7 @@ public class BoardController {
     }
 
     // 게시물 생성
-    @PostMapping("/board/new")
+    @PostMapping("/board/write")
     public String create(@Valid BoardForm boardForm, BindingResult result) {
         LOGGER.info("create");
 
@@ -39,11 +39,11 @@ public class BoardController {
             return "board/createBoardForm";
         }
         boardService.uploadPost(boardForm);
-        return "redirect:/board/list";
+        return "redirect:/board";
     }
 
     // 게시물 목록
-    @GetMapping("/board/list")
+    @GetMapping("/board")
     public String list(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum) {
         LOGGER.info("list");
 
@@ -57,11 +57,12 @@ public class BoardController {
     }
 
     // 게시물 조회
-    @GetMapping("/board/readView")
-    public String read(BoardDTO boardDTO, Model model) {
+    @GetMapping("/board/{postId}")
+    public String read(@PathVariable("postId") Long postId,
+                       BoardDTO boardDTO, Model model) {
         LOGGER.info("read");
 
-        BoardDTO findPost = boardService.read(boardDTO.getId());
+        BoardDTO findPost = boardService.read(postId);
         model.addAttribute("post", findPost);
         return "board/readView";
     }
@@ -88,7 +89,7 @@ public class BoardController {
         }
 
         boardService.updatePost(boardDTO);
-        return "redirect:/board/list";
+        return "redirect:/board";
     }
 
     // 게시물 삭제 뷰
@@ -97,6 +98,6 @@ public class BoardController {
         LOGGER.info("delete");
 
         boardService.deletePost(boardDTO.getId());
-        return "redirect:/board/list";
+        return "redirect:/board";
     }
 }
