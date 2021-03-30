@@ -53,7 +53,7 @@
                     <!--@thymesVar id="pageNum" type="java.lang.Integer"-->
                     <span th:each="pageNum : ${pageList}">
     <!--                    <a th:href="@{/board/list(page=(${pageNum} - 1))}" >이전</a>-->
-                        <a th:href="@{/board/list(page=${pageNum})}" th:text="${pageNum}"></a>
+                        <a th:href="@{/board(page=${pageNum})}" th:text="${pageNum}"></a>
     <!--                    <a th:href="@{/board/list(page=(${pageNum} + 1))}" >다음</a>-->
                     </span>
                 </div>
