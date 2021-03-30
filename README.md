@@ -2,6 +2,9 @@
 
 Springboot 및 JPA 학습을 위해 진행한 개인 프로젝트
 
+### URL
+http://jade-board.ml:8080/board
+
 ### Stack
 Java, Springboot, JPA, H2 Database, Thymeleaf
 
