@@ -21,6 +21,11 @@ public class BoardController {
     private final BoardService boardService;
     private static final Logger LOGGER = LoggerFactory.getLogger(BoardController.class);
 
+    @GetMapping("/")
+    public String home() {
+        return "main";
+    }
+
     // 게시물 생성뷰
     @GetMapping("/board/write")
     public String createBoardForm(Model model) {
